@@ -1,0 +1,74 @@
+<?php
+
+use Norsys\Ticket\Block\View;
+
+/** @var View $block */
+
+?>
+<?php $_ticket = $block->getTicket(); ?>
+<div class="block block-order-details-view">
+    <div class="block-title">
+        <strong><?= $block->escapeHtml(__('Ticket Information')) ?></strong>
+    </div>
+    <div class="block-content">
+        <div class="box">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Title')) ?></span>
+            </strong>
+            <div class="box-content">
+                <?= $_ticket->getTitle() ?>
+            </div>
+        </div>
+        <div class="box">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Emergency ')) ?></span>
+            </strong>
+            <div class="box-content">
+                <?= $_ticket->getEmergency() ?>
+            </div>
+        </div>
+        <div class="box">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Type')) ?></span>
+            </strong>
+            <div class="box-content">
+                <?= $_ticket->getType() ?>
+            </div>
+        </div>
+        <div class="box">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Updated At')) ?></span>
+            </strong>
+            <div class="box-content">
+                <?= /* @noEscape */
+                $block->formatDate($_ticket->getUpdatedAt()) ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-title">
+        <strong><?= $block->escapeHtml(__('Ticket Description')) ?></strong>
+    </div>
+    <div class="block-content">
+        <?= $_ticket->getDescription() ?>
+    </div>
+    <br>
+    <div class="block-title">
+        <strong><?= $block->escapeHtml(__('Ticket Attachment')) ?></strong>
+    </div>
+    <?php $attachments = $block->getTicketAttachment(); ?>
+    <div class="block-content">
+        <div class="box">
+            <?php if ($attachments && count($attachments)) : ?>
+                <div class="box-content">
+                    <?php foreach ($attachments as $_attachment) : ?>
+                        <img class="thumbnail-preview" src="<?= $block->getPath() . $_attachment->getFile() ?>">
+                    <?php endforeach; ?>
+                </div>
+            <?php else : ?>
+                <div class="message info empty">
+                    <span><?= $block->escapeHtml(__('You have placed no attachments.')) ?></span></div>
+            <?php endif ?>
+        </div>
+    </div>
+</div>

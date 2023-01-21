@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="Magento_User::inactive_user" title="Inactive Customers" translate="title" module="Magento_User"
+                sortOrder="40" parent="Magento_User::system_acl" action="adminhtml/user/inactiveuser"
+                resource="Magento_User::inactive_user"/>
+    </menu>
+</config>

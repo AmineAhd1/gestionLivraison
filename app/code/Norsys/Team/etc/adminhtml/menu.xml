@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Norsys_Team::team_management"
+             title="Team Management" module="Norsys_Team"
+             sortOrder="10"
+             resource="Norsys_Team::team_management"
+        />
+        <add id="Norsys_Team::team_members"
+             title="Team Members" module="Norsys_Team"
+             sortOrder="10" parent="Norsys_Team::team_management"
+             action="team/team"
+             resource="Norsys_Team::team_members"
+        />
+        <add id="Norsys_Team::teams_manage"
+             title="Teams Manage" module="Norsys_Team"
+             sortOrder="11" parent="Norsys_Team::team_management"
+             action="team/team/teamslist"
+             resource="Norsys_Team::teams_manage"
+        />
+    </menu>
+</config>

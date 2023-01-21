@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="norsys_package" resource="default" engine="innodb" comment="Package Table">
+        <column xsi:type="int" name="package_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Package ID"/>
+        <column xsi:type="int" name="parent_id" padding="10" unsigned="true" nullable="true" identity="false"
+                comment="Package Parent ID"/>
+        <column xsi:type="varchar" name="typePackage" nullable="false" length="25" comment="Package Type"/>
+        <column xsi:type="varchar" name="receiverFullName" nullable="false" length="50"
+                comment="Package Receiver Full Name"/>
+        <column xsi:type="varchar" name="phoneNumber" nullable="false" length="25" comment="Package Phone Number"/>
+        <column xsi:type="varchar" name="city" nullable="false" length="25" comment="Package City"/>
+        <column xsi:type="varchar" name="street" nullable="false" length="50" comment="Package street"/>
+        <column xsi:type="int" name="zipCode" padding="6" nullable="false" comment="Package Zip Code"/>
+        <column xsi:type="float" name="price" unsigned="false" nullable="false" comment="Package Price"/>
+        <column xsi:type="float" name="weight" unsigned="false" nullable="false" comment="Package Weight"/>
+        <column xsi:type="varchar" name="code" nullable="true" length="100" comment="Package Code"/>
+        <column xsi:type="boolean" name="is_deleted" nullable="true" default="false" comment="is_deleted"/>
+        <column xsi:type="int" name="user_cl_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="User Cl ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="package_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FL_user_cl" table="norsys_package"
+                    column="user_cl_id" referenceTable="admin_user" referenceColumn="user_id"
+                    onDelete="CASCADE"/>
+        <constraint xsi:type="unique" referenceId="PACKAGE_CODE">
+            <column name="code"/>
+        </constraint>
+    </table>
+    <table name="norsys_crbt" resource="default" engine="innodb" comment="Team CRBT Table">
+        <column xsi:type="int" name="crbt_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="CRBT ID"/>
+        <column xsi:type="int" name="package_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Package ID"/>
+        <column xsi:type="varchar" name="status" nullable="true" length="50" comment="CRBT status"/>
+        <column xsi:type="float" name="price" unsigned="false" nullable="false" comment="CRBT Price"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="CRBT Created Time"/>
+        <column xsi:type="timestamp" name="paid_at" on_update="false" nullable="true" comment="CRBT Paid Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="crbt_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PACKAGE_CRBT_CRBT_ID_PACKAGE_PACKAGE_ID" table="norsys_crbt"
+                    column="package_id" referenceTable="norsys_package"
+                    referenceColumn="package_id" onDelete="CASCADE"/>
+        <index referenceId="PACKAGE_CRBT_CRBT_ID" indexType="btree">
+            <column name="package_id"/>
+        </index>
+    </table>
+    <table name="norsys_packageStatus" resource="default" engine="innodb" comment="Package Table">
+        <column xsi:type="int" name="packageStatus_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Package Status ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="30" comment="Package Status Title"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="packageStatus_id"/>
+        </constraint>
+    </table>
+    <table name="norsys_packageTracking" resource="default" engine="innodb" comment="Package Table">
+        <column xsi:type="int" name="packageTracking_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Package Tracking ID"/>
+        <column xsi:type="int" name="packageStatus_id" padding="10" unsigned="true" nullable="false" identity="false"
+                comment="Package Status ID"/>
+        <column xsi:type="int" name="package_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Package ID"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Package Tracking Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Package Tracking Modified Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="packageTracking_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PACKAGE_PACKAGE_TRACKING_ID_PACKAGE_PACKAGE_STATUS_ID"
+                    table="norsys_packageTracking"
+                    column="packageStatus_id" referenceTable="norsys_packageStatus"
+                    referenceColumn="packageStatus_id" onDelete="CASCADE"/>
+        <index referenceId="PACKAGE_PACKAGE_TRACKING_ID" indexType="btree">
+            <column name="packageStatus_id"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="PACKAGE_PACKAGE_TRACKING_ID_PACKAGE_PACKAGE_ID"
+                    table="norsys_packageTracking"
+                    column="package_id" referenceTable="norsys_package"
+                    referenceColumn="package_id" onDelete="CASCADE"/>
+        <index referenceId="PACKAGE_PACKAGE_ID" indexType="btree">
+            <column name="package_id"/>
+        </index>
+    </table>
+    <table name="norsys_package_productStock" resource="default" engine="innodb" comment="Package ProductStock Table">
+        <column xsi:type="int" name="package_product_stock_id" padding="6" unsigned="false" nullable="false"
+                identity="true" comment="Package ProductStock ID"/>
+        <column xsi:type="int" name="package_id" padding="10" unsigned="true" nullable="false" identity="false"
+                comment="Package ID"/>
+        <column xsi:type="int" name="product_stock_id" padding="6" unsigned="false" nullable="false" identity="false"
+                comment="ID"/>
+        <column xsi:type="float" name="total_price" unsigned="false" nullable="false"
+                comment="Package Product Stock Price"/>
+        <column xsi:type="int" name="package_product_qty" padding="6" nullable="false"
+                comment="Package Product Stock Quantity"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="package_product_stock_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PACKAGE_PRODUCTSTOCK_PACKAGE_ID_PACKAGE_PACKAGE_ID"
+                    table="norsys_package_productStock"
+                    column="package_id" referenceTable="norsys_package"
+                    referenceColumn="package_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="PACKAGE_PRODUCTSTOCK_ENTITY_ID_PRODUCT_STOCK_SL_ENTITY_ID"
+                    table="norsys_package_productStock"
+                    column="product_stock_id" referenceTable="norsys_product_stock_sl"
+                    referenceColumn="entity_id"/>
+        <index referenceId="PACKAGE_PRODUCTSTOCK_PACKAGE_ID" indexType="btree">
+            <column name="package_id"/>
+        </index>
+        <index referenceId="PACKAGE_PRODUCTSTOCK_ENTITY_ID" indexType="btree">
+            <column name="product_stock_id"/>
+        </index>
+    </table>
+</schema>

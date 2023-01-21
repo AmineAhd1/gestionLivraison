@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <title>My Ticket Info</title>
+    </head>
+    <body>
+        <referenceContainer name="page.main.title">
+            <block class="Norsys\Ticket\Block\View" name="ticket.status" template="Norsys_Ticket::ticket_status.phtml"/>
+            <block class="Norsys\Ticket\Block\View" name="ticket.date" template="Norsys_Ticket::ticket_date.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Norsys\Ticket\Block\View" name="ticket_ticket_view"
+                   template="Norsys_Ticket::view.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

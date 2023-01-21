@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/vendor/magefan/module-blog/view/frontend/web/js/magefan-comments.js

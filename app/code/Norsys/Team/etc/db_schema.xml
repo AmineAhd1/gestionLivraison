@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="norsys_team" resource="default" engine="innodb" comment="Team Table">
+        <column xsi:type="int" name="team_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Team ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="25" comment="Team Name"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Team Description"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Team Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Team Modified Time"/>
+        <column xsi:type="int" name="user_cl_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Admin User Cl ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="team_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FL_user_cl" table="norsys_team_member"
+                    column="user_cl_id" referenceTable="admin_user" referenceColumn="user_id"
+                    onDelete="CASCADE"/>
+    </table>
+    <table name="norsys_team_member" resource="default" engine="innodb" comment="Team Members Table">
+        <column xsi:type="int" name="team_member_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Member ID"/>
+        <column xsi:type="int" name="team_id" padding="10" unsigned="true" nullable="false" identity="false" default="0"
+                comment="Team ID"/>
+        <column xsi:type="int" name="user_cl_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Admin User Cl ID"/>
+        <column xsi:type="varchar" name="firstname" nullable="true" length="32" comment="Member First Name"/>
+        <column xsi:type="varchar" name="lastname" nullable="true" length="32" comment="Member Last Name"/>
+        <column xsi:type="varchar" name="email" nullable="true" length="128" comment="Member Email"/>
+        <column xsi:type="varchar" name="username" nullable="true" length="40" comment="Member Login"/>
+        <column xsi:type="varchar" name="password" nullable="false" length="255" comment="Member Password"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Team Member Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Team Member Modified Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="team_member_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="TEAM_MEMBER_USERNAME">
+            <column name="username"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TEAM_MEMBER_TEAM_ID_TEAM_TEAM_ID" table="norsys_team_member"
+                    column="team_id" referenceTable="norsys_team"
+                    referenceColumn="team_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="FL_user_cl" table="norsys_team_member"
+                    column="user_cl_id" referenceTable="admin_user" referenceColumn="user_id"
+                    onDelete="CASCADE"/>
+        <index referenceId="TEAM_MEMBER_TEAM_ID" indexType="btree">
+            <column name="team_id"/>
+        </index>
+    </table>
+</schema>

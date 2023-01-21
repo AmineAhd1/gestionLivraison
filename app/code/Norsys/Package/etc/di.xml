@@ -1,0 +1,59 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="norsys_package_package_listing_data_source" xsi:type="string">Norsys\Package\Model\ResourceModel\Package\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Norsys\Package\Model\ResourceModel\Package\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">norsys_package</argument>
+            <argument name="resourceModel" xsi:type="string">Norsys\Package\Model\ResourceModel\Package</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="norsys_package_package_listing_data_source" xsi:type="string">Norsys\Ticket\Model\ResourceModel\Ticket\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Norsys\Ticket\Model\ResourceModel\Ticket\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">norsys_ticket</argument>
+            <argument name="resourceModel" xsi:type="string">Norsys\Ticket\Model\ResourceModel\Ticket</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+        <argument name="collections" xsi:type="array">
+            <item name="norsys_productstock_listing_data_source" xsi:type="string">
+                Norsys\ProductStock\Model\ResourceModel\ProductStock\Grid\Collection
+            </item>
+        </argument>
+    </arguments>
+</type>
+    <virtualType name="Norsys\ProductStock\Model\ResourceModel\ProductStock\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">norsys_product_stock_sl</argument>
+            <argument name="resourceModel" xsi:type="string">
+                Norsys\ProductStock\Model\ResourceModel\ProductStock
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Norsys\Package\Model\ResourceModel\Package\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">norsys_package</argument>
+            <argument name="resourceModel" xsi:type="string">Norsys\Package\Model\ResourceModel\Package\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="norsys_package_stock_form_data_source" xsi:type="string">Norsys\Package\Model\ResourceModel\Package\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Norsys_Task::task_management"
+             title="Task Management" module="Norsys_Task"
+             sortOrder="10"
+             resource="Norsys_Task::task_management"
+        />
+        <add id="Norsys_Task::all_tasks"
+             title="Assigned Tasks" module="Norsys_Task"
+             sortOrder="10" parent="Norsys_Task::task_management"
+             action="task/stafftptask"
+             resource="Norsys_Task::all_tasks"
+        />
+    </menu>
+</config>

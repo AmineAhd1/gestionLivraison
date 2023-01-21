@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="admin_emails_new_user_active_template"
+              label="New User Active"
+              file="new_user_active.html"
+              type="text"
+              module="Norsys_Inscription"
+              area="adminhtml"/>
+    <template id="admin_emails_new_user_reject_template"
+              label="New User Reject"
+              file="new_user_reject.html"
+              type="text"
+              module="Norsys_Inscription"
+              area="adminhtml"/>
+</config>

@@ -1,0 +1,18 @@
+<?php
+
+use Norsys\Ticket\Block\View;
+
+/** @var View $block */
+
+?>
+<?php $_ticket = $block->getTicket() ; ?>
+
+<div class="order-date">
+    <?= $block->escapeHtml(
+        __(
+            '<span class="label">Ticket Date:</span> %1',
+            '<span>' . $block->formatDate($_ticket->getCreatedAt(), \IntlDateFormatter::LONG) . '</span>'
+        ),
+        ['span']
+    ) ?>
+</div>

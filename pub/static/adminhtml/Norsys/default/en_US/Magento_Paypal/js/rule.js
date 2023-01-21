@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/vendor/magento/module-paypal/view/adminhtml/web/js/rule.js

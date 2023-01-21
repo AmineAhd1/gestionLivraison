@@ -1,0 +1,61 @@
+<?php
+
+use Norsys\Task\Block\Adminhtml\Stafftptask\View\Info;
+
+/** @var Info $block */
+$task = $block->getTask();
+$ticket = $block->getTicket();
+?>
+
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Task Details')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tbody>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    </tbody>
+                    <tr>
+                        <td><?= $task->getTitle() ?></td>
+                        <td><?= $task->getDescription() ?></td>
+                        <td><?= $task->getStatus() ?></td>
+                        <td><?= $task->getCreatedAt() ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Ticket Details')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tbody>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Created At</th>
+                    </tbody>
+                    <tr>
+                        <td><?= $ticket->getTitle() ?></td>
+                        <td><?= $ticket->getDescription() ?></td>
+                        <td><?= $ticket->getType() ?></td>
+                        <td><?= $ticket->getCreatedAt() ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</section>
+
+

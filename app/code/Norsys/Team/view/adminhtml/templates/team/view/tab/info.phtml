@@ -1,0 +1,87 @@
+<?php
+
+use Norsys\Team\Block\Adminhtml\Team\View\Info;
+
+/** @var Info $block */
+$team=$block->getTeam();
+$user=$block->getTeamUser();
+$members=$block->getMember();
+?>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Team Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* Team Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Id')) ?></th>
+                        <td><?= $team->getTeamId() ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Name')) ?></th>
+                        <td><span><?= $block->escapeHtml($team->getName()) ?></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Team manager')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* Team User Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('User Id')) ?></th>
+                        <td>0000<?= $user->getUserId() ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('FirstName')) ?></th>
+                        <td><span><?= $block->escapeHtml($user->getFirstName()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('LastName')) ?></th>
+                        <td><span><?= $block->escapeHtml($user->getLastName()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Email Adress')) ?></th>
+                        <td><span><?= $block->escapeHtml($user->getEmail()) ?></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Team members')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* team User Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('First Name')) ?></th>
+                        <th><?= $block->escapeHtml(__('Last Name')) ?></th>
+                        <th><?= $block->escapeHtml(__('Email Adress')) ?></th>
+                    </tr>
+                    <?php foreach ($members as $member) : ?>
+                        <tr>
+                            <td><?= $block->escapeHtml(__($member->getFirstname())) ?></td>
+                            <td><?= $block->escapeHtml(__($member->getLastname())) ?></td>
+                            <td><?= $block->escapeHtml(__($member->getEmail())) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="Magento_Reports::report_delivery" title="Delivery Service Reporting" translate="title" module="Magento_Reports"
+                sortOrder="40" parent="Magento_Reports::report"
+                resource="Magento_Reports::report_delivery"/>
+        <update id="Magento_Reports::Customers" title="View reports" translate="title" module="Magento_Reports"
+                sortOrder="41" parent="Magento_Reports::report_delivery" action="reporting/graph/index"
+                resource="Magento_Reports::Customers"/>
+    </menu>
+</config>

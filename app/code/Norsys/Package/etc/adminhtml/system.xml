@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="package_tab" translate="label" sortOrder="10">
+            <label>Package</label>
+        </tab>
+        <section id="packages_conf" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>class-separator</class>
+            <label>Delivery Price Per 1 KG</label>
+            <tab>package_tab</tab>
+            <resource>Norsys_Package::package_config</resource>
+
+            <group id="package_items_group" translate="label" type="text" sortOrder="1" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Delivery Price Per 1 KG</label>
+                <field id="priceper1kg" type="text" sortOrder="2" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>delivery price per 1 Kg</label>
+                    <comment>Default delivery price per 1 Kg is 50 DH</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

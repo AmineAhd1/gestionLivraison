@@ -1,0 +1,14 @@
+<!--@subject {{trans "Response to your registration request"}} @-->
+<!--@vars {
+"var store.frontend_name":"Store Name",
+"var store_email":"Store Email",
+"var store_phone":"Store Phone"
+} @-->
+
+{{trans "Hello,"}}
+{{trans "We appreciate your interest in our company and the time you’ve invested in applying"}}
+{{trans "Unfortunately, our team did not accept your request"}}
+{{trans "If you have any questions, please do not hesitate to contact us at %store_email" store_email=$store_email |escape}}{{depend store_phone}} {{trans "or call us at %store_phone" store_phone=$store_phone |escape}}{{/depend}}.
+
+{{trans "Thank you,"}}
+{{var store.frontend_name}}

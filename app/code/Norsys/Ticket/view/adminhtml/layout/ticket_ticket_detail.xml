@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Ticket Detail</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Norsys\Ticket\Block\Adminhtml\Ticket\Detail" name="ticket_validate"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Norsys\Ticket\Block\Adminhtml\Ticket\View\Info" name="ticket_info"
+                   template="Norsys_Ticket::ticket/view/tab/info.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

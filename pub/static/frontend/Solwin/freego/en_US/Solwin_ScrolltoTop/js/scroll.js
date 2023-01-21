@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/app/code/Solwin/ScrolltoTop/view/frontend/web/js/scroll.js

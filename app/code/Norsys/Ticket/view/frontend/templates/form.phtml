@@ -1,0 +1,84 @@
+<?php
+
+use Norsys\Ticket\Block\Ticket;
+
+/** @var Ticket $block */
+
+?>
+<form class="form" id="form" method="post"
+      action="<?= $block->getPostUrl() ?>" enctype="multipart/form-data"
+      data-mage-init='{"validation":{"rules": {"field-4": {"required":true}}}}'>
+    <fieldset class="fieldset">
+        <legend class="legend">
+            <span><?= $block->escapeHtmlAttr(__('Add ticket info')) ?></span>
+        </legend>
+        <div class="field name required">
+            <label class="label" for="title"><span> Title </span></label>
+            <div class="control">
+                <input name="title" id="title" type="text"
+                       placeholder="Enter a brief description of the ticket"
+                       class="input-text required-entry"/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label"
+                   for="description"><span> Description </span></label>
+            <div class="control">
+                <textarea name="description" id="description"
+                          placeholder="Enter a detailed description of the ticket"
+                          class="textarea required-entry"></textarea>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="type"><span> Type </span></label>
+            <div class="control">
+                <select name="type" id="type" class="select required-entry">
+                    <option class="selected-item" disabled>Choose the ticket
+                        type
+                    </option>
+                    <option class="selectmenu-item">Comment</option>
+                    <option class="selectmenu-item">Question</option>
+                    <option class="selectmenu-item">Complaint</option>
+                </select>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label"
+                   for="emergency"><span> Emergency </span></label>
+            <div class="control">
+                <select name="emergency" id="emergency"
+                        class="select required-entry">
+                    <option class="selected-item" disabled> Choose the level of
+                        emergency of the ticket
+                    </option>
+                    <option class="selectmenu-item">Low</option>
+                    <option class="selectmenu-item">Average</option>
+                    <option class="selectmenu-item">High</option>
+                </select>
+            </div>
+        </div>
+        <legend class="legend">
+            <span><?= $block->escapeHtmlAttr(__('Add ticket attachment')) ?></span>
+        </legend>
+        <p id="alertMessage" style="display: none;color: #e02b27; font-size: 1.4rem;">
+            File size is greater than 2MB
+        </p>
+        <div class="field name ">
+            <label class="label" for="file"><span> Attachment </span></label>
+
+            <div class="control">
+                <input type="file" name="file" id="file" class="input-file"/>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="Submit" id="createNewTicket"
+                    class="action submit primary">
+                <span>Submit</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+

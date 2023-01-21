@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Norsys_Package::css/package.css"/>
+    </head>
+    <body>
+        <referenceContainer name="header">
+            <block class="Magento\Backend\Block\Page\Header" name="logo" before="-">
+                <referenceBlock name="copyright">
+                    <arguments>
+                        <argument name="template" xsi:type="string">
+                            Norsys_Package::copyright.phtml
+                        </argument>
+                    </arguments>
+                </referenceBlock>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

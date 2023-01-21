@@ -1,0 +1,89 @@
+<?php
+
+use Norsys\ProductStock\Block\Adminhtml\ProductStock\View\Info;
+
+/** @var Info $block */
+$stock=$block->getStock();
+$user=$block->getStockUser();
+$products=$block->getStockProduct();
+?>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Stock Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* Stock Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Id')) ?></th>
+                        <td><?= $stock->getEntityId() ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Title')) ?></th>
+                        <td><span><?= $block->escapeHtml($stock->getTitle()) ?></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Assign To')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* Stock User Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('User Id')) ?></th>
+                        <td>0000<?= $user->getUserId() ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('FirstName')) ?></th>
+                        <td><span><?= $block->escapeHtml($user->getFirstName()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('LastName')) ?></th>
+                        <td><span><?= $block->escapeHtml($user->getLastName()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Email')) ?></th>
+                        <td><span><?= $block->escapeHtml($user->getEmail()) ?></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Stock Items')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* Stock User Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Product Title')) ?></th>
+                        <th><?= $block->escapeHtml(__('Product Description')) ?></th>
+                        <th><?= $block->escapeHtml(__('Product Quantity')) ?></th>
+                        <th><?= $block->escapeHtml(__('Product Unit Price')) ?></th>
+                    </tr>
+                    <?php foreach ($products as $product) : ?>
+                    <tr>
+                        <td><?= $block->escapeHtml(__($product->getTitle())) ?></td>
+                        <td><?= $block->escapeHtml(__($product->getDescription())) ?></td>
+                        <td><?= $block->escapeHtml(__($product->getQty())) ?></td>
+                        <td><?= $block->escapeHtml(__($product->getUnitprice())) ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

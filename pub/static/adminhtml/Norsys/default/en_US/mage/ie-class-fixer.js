@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/lib/web/mage/ie-class-fixer.js

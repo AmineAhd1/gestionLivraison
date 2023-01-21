@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Norsys_ProductStock::Stock" title="Stock" module="Norsys_ProductStock" sortOrder="50"
+             resource="Norsys_ProductStock::Stock"/>
+
+        <add id="Norsys_ProductStock::ManageStock" title="Manage Stocks" module="Norsys_ProductStock" sortOrder="10"
+             action="norsys_productstock/stock/stocklist" resource="Norsys_ProductStock::ManageStock"
+             parent="Norsys_ProductStock::Stock"/>
+
+        <add id="Norsys_ProductStock::products" title="Products Stock" module="Norsys_ProductStock" sortOrder="10"
+             action="norsys_productstock/stock/index" resource="Norsys_ProductStock::ProductStock"
+             parent="Norsys_ProductStock::Stock"/>
+    </menu>
+</config>

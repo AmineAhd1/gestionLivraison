@@ -1,0 +1,275 @@
+<?php
+
+use Magento\Framework\Exception\LocalizedException;
+use Norsys\Package\Block\Adminhtml\Package\View\Info;
+
+/** @var Info $block */
+$package = $block->getPackage();
+$packageUser = $block->getPackageUser();
+$crbt = $block->getCRBT();
+try {
+    $trackingStatus = $block->getTrackingStatus();
+    $packageCreatedAt = $block->getPackageCreatedAt();
+    $currentStatus = $block->getCurrentStatus();
+    $packageProductStock = $block->getPackageProduct();
+} catch (LocalizedException $e) {
+    $this->messageManager->addErrorMessage($e->getMessage());
+}
+
+?>
+<?php if ($package !== NULL and $crbt !== NULL and $packageUser != NULL): ?>
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+        <span class="title">
+            <?= $block->escapeHtml(__('Package & Account Information')) ?>
+        </span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item order-information">
+                <?php /* Package Information */ ?>
+                <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= $block->escapeHtml(__('Package Information')) ?>
+                </span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <table class="admin__table-secondary ">
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Package Date')) ?></th>
+                            <td><?= $packageCreatedAt ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Package Current Status')) ?></th>
+                            <td><?= $currentStatus ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Package Type')) ?></th>
+                            <td><?= $package->getData('typePackage') ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Package Code')) ?></th>
+                            <td><?= $package->getData('code') ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="admin__page-section-item order-account-information">
+                <?php /* Account Information */ ?>
+                <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= $block->escapeHtml(__('Account Information')) ?>
+                </span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <table class="admin__table-secondary">
+                        <tr>
+                            <th><?= $block->escapeHtml(__('User Fullname')) ?></th>
+                            <td>
+                                <?= $packageUser->getFirstName() . ' ' . $packageUser->getLastName() ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Email')) ?></th>
+                            <td> <?= $packageUser->getEmail() ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+        <span class="title">
+            <?= $block->escapeHtml(__('Address Information')) ?>
+        </span>
+        </div>
+
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item order-information">
+                <?php /* Receiver Information */ ?>
+                <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= $block->escapeHtml(__('Receiver Information')) ?>
+                </span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <table class="admin__table-secondary ">
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Receiver Name')) ?></th>
+                            <td><?= $package->getData('receiverFullName') ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Receiver Phone Number')) ?></th>
+                            <td>
+                                <span><?= $block->escapeHtml($package->getData('phoneNumber')) ?></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="admin__page-section-item order-account-information">
+                <?php /* Account Information */ ?>
+                <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= $block->escapeHtml(__('Shipping Address Information')) ?>
+                </span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <table class="admin__table-secondary">
+                        <tr>
+                            <th><?= $block->escapeHtml(__('City')) ?></th>
+                            <td>
+                                <?= $package->getCity() ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Street')) ?></th>
+                            <td> <?= $package->getStreet() ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Zip Code')) ?></th>
+                            <td> <?= $package->getData('zipCode') ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+        <span class="title">
+            <?= $block->escapeHtml(__('Payment & Shipping Method')) ?>
+        </span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item order-information">
+                <?php /* Shipping Information */ ?>
+                <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= $block->escapeHtml(__('Shipping Information')) ?>
+                </span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <table class="admin__table-secondary ">
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Package Weight')) ?></th>
+                            <td><?= $package->getWeight() . ' Kg' ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Total Shipping Charges')) ?></th>
+                            <td><?= $package->getPrice() . ' DH' ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="admin__page-section-item order-account-information">
+                <?php /* Payment Information */ ?>
+                <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= $block->escapeHtml(__('Cash On Delivery Information')) ?>
+                </span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <table class="admin__table-secondary">
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Status')) ?></th>
+                            <td>
+                                <?= $crbt->getStatus() ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Total Product Price')) ?></th>
+                            <td> <?= $crbt->getPrice() . ' DH' ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= $block->escapeHtml(__('Payment Date')) ?></th>
+                            <?php if ($crbt->getPaidAt() !== NULL) : ?>
+                                <td> <?= $crbt->getPaidAt() ?></td>
+                            <?php else : ?>
+                                <td> <?= $block->escapeHtml(__('Not Yet')) ?></td>
+                            <?php endif; ?>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="admin__page-section ">
+        <div class="admin__page-section-title">
+        <span
+            class="title"><?= $block->escapeHtml(__('Products in Package')) ?></span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item ">
+                <div class="admin__page-section-item-content">
+                    <?php if ($packageProductStock !== NULL && count($packageProductStock)) : ?>
+                        <table class="admin__table-secondary ">
+                            <tr>
+                                <th><?= $block->escapeHtml(__('Product Title')) ?></th>
+                                <th><?= $block->escapeHtml(__('Product Unit Price')) ?></th>
+                                <th><?= $block->escapeHtml(__('Product Quantity')) ?></th>
+                                <th><?= $block->escapeHtml(__('Product Total Price')) ?></th>
+                            </tr>
+                            <?php foreach ($packageProductStock as $product) : ?>
+                                <tr>
+                                    <td><?= $block->escapeHtml(__($product->getTitle())) ?></td>
+                                    <td><?= $block->escapeHtml(__($product->getData('unitprice'))) ?></td>
+                                    <td><?= $block->escapeHtml(__($product->getPackageProductQty())) ?></td>
+                                    <td><?= $block->escapeHtml(__($product->getTotalPrice())) ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    <?php else : ?>
+                        <div class="message info empty">
+                            <span><?= $block->escapeHtml(__('This package has no placed product from stock.')) ?></span>
+                        </div>
+                    <?php endif ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+            <span class="title">
+                <?= $block->escapeHtml(__(' Package Tracking Information')) ?>
+            </span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item">
+                <?php /* Package Tracking Information */ ?>
+                <div class="admin__page-section-item-title">
+                    <span class="title">
+                        <?= $block->escapeHtml(__('Package TimeLine')) ?>
+                    </span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <div class="swiper-wrapper timeline">
+                        <?php if ($trackingStatus !== NULL && count($trackingStatus)) : ?>
+                            <?php foreach ($trackingStatus as $ts) : ?>
+                                <div class="swiper-slide">
+                                    <div class="timestamp">
+                                <span
+                                    class="date"><?= $block->formatDate($ts->getCreatedAt(), \IntlDateFormatter::LONG) ?><span>
+                                    </div>
+                                    <div class="status">
+                                        <span><?= $ts->getTitle() ?></span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <div class="message info empty">
+                                <span><?= $block->escapeHtml(__('NO Tracking status for the moment')) ?></span>
+                            </div>
+                        <?php endif ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php else : ?>
+    <td> <?= $block->escapeHtml(__('No information for the moment')) ?></td>
+<?php endif; ?>

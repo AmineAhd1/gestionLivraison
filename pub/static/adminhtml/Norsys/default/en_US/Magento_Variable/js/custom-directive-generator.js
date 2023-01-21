@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/vendor/magento/module-variable/view/adminhtml/web/js/custom-directive-generator.js

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="norsys_ticket" resource="default" engine="innodb" comment="Ticket Table">
+        <column xsi:type="int" name="ticket_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Ticket ID"/>
+        <column xsi:type="int" name="package_id" padding="10" unsigned="true" nullable="true" identity="false" comment="Package ID"/>
+        <column xsi:type="int" name="user_cl_id" padding="10" unsigned="true" nullable="true" identity="false"  comment="User Cl ID"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="true" identity="false"  comment="Customer ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="25" comment="Ticket Title"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Ticket Description"/>
+        <column xsi:type="varchar" name="type" nullable="false" length="25" comment="Ticket Type"/>
+        <column xsi:type="varchar" name="emergency" nullable="true" length="25" comment="Ticket emergency according to customer"/>
+        <column xsi:type="varchar" name="impact" nullable="true" length="25" comment="Ticket impact according to tech"/>
+        <column xsi:type="varchar" name="priority" nullable="true" length="25" comment="Ticket Priority"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="25" comment="Ticket Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Ticket Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Ticket Modified Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="ticket_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PACKAGE_TICKET_TICKET_ID_PACKAGE_PACKAGE_ID" table="norsys_ticket"
+                    column="package_id" referenceTable="norsys_package"
+                    referenceColumn="package_id" onDelete="CASCADE"/>
+        <index referenceId="PACKAGE_TICKET_TICKET_ID" indexType="btree">
+            <column name="package_id"/>
+        </index>
+        <index referenceId="TICKET_CUSTOMER_ID" indexType="btree">
+            <column name="customer_id"/>
+        </index>
+    </table>
+    <table name="norsys_ticket_attachment" resource="default" engine="innodb" comment="Ticket attachment Table">
+        <column xsi:type="int" name="ticket_attachment_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Ticket Attachment ID"/>
+        <column xsi:type="int" name="ticket_id" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Ticket ID"/>
+        <column xsi:type="varchar" name="file" nullable="false" length="100" comment="Ticket attachment File"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Ticket Attachemnet Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Ticket Attachemnet Modified Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="ticket_attachment_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TICKET_ATTACHMENT_TICKET_ID_TICKET_TICKET_ID" table="norsys_ticket_attachment" column="ticket_id" referenceTable="norsys_ticket"
+                    referenceColumn="ticket_id" onDelete="CASCADE"/>
+        <index referenceId="TICKET_ATTACHMENT_TICKET_ID" indexType="btree">
+            <column name="ticket_id"/>
+        </index>
+    </table>
+
+</schema>

@@ -1,0 +1,144 @@
+<?php
+
+declare(strict_types=1);
+
+use Norsys\Package\Block\Adminhtml\Package\ViewReturnDetail\Info;
+
+/** @var Info $block */
+$ticket = $block->getTicket();
+$user = $block->getUser();
+$package = $block->getPackageInfo();
+?>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('User Account Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* Customer Account Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('User Name')) ?></th>
+                        <td><?= $user->getFirstname() . ' ' . $user->getLastname() ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('User Email')) ?></th>
+                        <td><span><?= $block->escapeHtml($user->getEmail()) ?></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Return Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item">
+            <?php /* Ticket Information */ ?>
+            <div class="admin__page-section-item-title">
+                <span class="title">
+                    <?= $block->escapeHtml(__('Ticket # %1', $ticket->getTicketId())) ?>
+                </span>
+            </div>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Ticket Title')) ?></th>
+                        <td><?= $ticket->getTitle() ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Ticket Status')) ?></th>
+                        <td><span><?= $block->escapeHtml($ticket->getStatus()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Ticket Type')) ?></th>
+                        <td><span><?= $block->escapeHtml($ticket->getType()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Ticket Emergency')) ?></th>
+                        <td><span><?= $block->escapeHtml($ticket->getEmergency()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Ticket Impact')) ?></th>
+                        <td><span><?= $block->escapeHtml($ticket->getImpact()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Ticket Priority')) ?></th>
+                        <td><span><?= $block->escapeHtml($ticket->getPriority()) ?></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Created At')) ?></th>
+                        <td><span><?= $block->escapeHtml($ticket->getCreatedAt()) ?></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Return Description')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item">
+            <span><?= $block->escapeHtml($ticket->getDescription()) ?></span>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Return Attachment')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <?php /* Ticket Attachment */ ?>
+        <?php $attachments = $block->getTicketAttachment(); ?>
+        <?php if ($attachments && count($attachments)) : ?>
+            <?php foreach ($attachments as $_attachment) : ?>
+                <div class="admin__page-section-item">
+                    <img src="<?= $block->getPath() . $_attachment->getFile() ?>" style="width: 30%;">
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <div class="message info empty">
+                <span><?= $block->escapeHtml(__('This user has no placed attachments.')) ?></span></div>
+        <?php endif ?>
+    </div>
+</section>
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Package Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <?php /* Package user Information */ ?>
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Receiver FullName')) ?></th>
+                        <th><?= $block->escapeHtml(__('Type')) ?></th>
+                        <th><?= $block->escapeHtml(__('City')) ?></th>
+                        <th><?= $block->escapeHtml(__('Phone Number')) ?></th>
+                        <th><?= $block->escapeHtml(__('Street')) ?></th>
+                        <th><?= $block->escapeHtml(__('Weight')) ?></th>
+                        <th><?= $block->escapeHtml(__('Price')) ?></th>
+                        <th><?= $block->escapeHtml(__('Action')) ?></th>
+                    </tr>
+                    <tr>
+                        <td><?= $block->escapeHtml(__($package->getData('receiverFullName'))) ?></td>
+                        <td><?= $block->escapeHtml(__($package->getData('typePackage'))) ?></td>
+                        <td><?= $block->escapeHtml(__($package->getData('city'))) ?></td>
+                        <td><?= $block->escapeHtml(__($package->getData('phoneNumber'))) ?></td>
+                        <td><?= $block->escapeHtml(__($package->getData('street'))) ?></td>
+                        <td><?= $block->escapeHtml(__($package->getData('weight'))) ?></td>
+                        <td><?= $block->escapeHtml(__($package->getData('price'))) ?></td>
+                        <td><a href="<?= $block->getViewUrl($package->getPackageId(),
+                                $block->getCurrentStatus()) ?> ">View more</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

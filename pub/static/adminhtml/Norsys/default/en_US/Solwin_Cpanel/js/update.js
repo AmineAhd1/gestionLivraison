@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/app/code/Solwin/Cpanel/view/adminhtml/web/js/update.js

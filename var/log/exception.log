@@ -1,0 +1,36 @@
+[2022-06-11 10:39:54] main.CRITICAL: Unable to send mail: Unknown error {"exception":"[object] (Magento\\Framework\\Exception\\MailException(code: 0): Unable to send mail: Unknown error at /var/www/html/gestionlivraison/vendor/magento/module-email/Model/Transport.php:103, Laminas\\Mail\\Transport\\Exception\\RuntimeException(code: 0): Unable to send mail: Unknown error at /var/www/html/gestionlivraison/vendor/laminas/laminas-mail/src/Transport/Sendmail.php:298)"} []
+[2022-06-11 10:49:10] main.CRITICAL: 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials p7-20020adfe607000000b0021004d7d75asm2149366wrm.84 - gsmtp
+ {"exception":"[object] (Magento\\Framework\\Exception\\MailException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials p7-20020adfe607000000b0021004d7d75asm2149366wrm.84 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/mageplaza/module-smtp/Mail/Transport.php:141, Laminas\\Mail\\Protocol\\Exception\\RuntimeException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials p7-20020adfe607000000b0021004d7d75asm2149366wrm.84 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/laminas/laminas-mail/src/Protocol/AbstractProtocol.php:339)"} []
+[2022-06-11 10:49:21] main.CRITICAL: 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials v1-20020adfebc1000000b0020d07d90b71sm2135319wrn.66 - gsmtp
+ {"exception":"[object] (Magento\\Framework\\Exception\\MailException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials v1-20020adfebc1000000b0020d07d90b71sm2135319wrn.66 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/mageplaza/module-smtp/Mail/Transport.php:141, Laminas\\Mail\\Protocol\\Exception\\RuntimeException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials v1-20020adfebc1000000b0020d07d90b71sm2135319wrn.66 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/laminas/laminas-mail/src/Protocol/AbstractProtocol.php:339)"} []
+[2022-06-11 10:49:42] main.CRITICAL: 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials n4-20020a5d4204000000b0020c5253d8casm2195765wrq.22 - gsmtp
+ {"exception":"[object] (Magento\\Framework\\Exception\\MailException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials n4-20020a5d4204000000b0020c5253d8casm2195765wrq.22 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/mageplaza/module-smtp/Mail/Transport.php:141, Laminas\\Mail\\Protocol\\Exception\\RuntimeException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials n4-20020a5d4204000000b0020c5253d8casm2195765wrq.22 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/laminas/laminas-mail/src/Protocol/AbstractProtocol.php:339)"} []
+[2022-06-11 10:55:08] main.CRITICAL: 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials v17-20020a05600c215100b0039c4506bd25sm2601485wml.14 - gsmtp
+ {"exception":"[object] (Magento\\Framework\\Exception\\MailException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials v17-20020a05600c215100b0039c4506bd25sm2601485wml.14 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/mageplaza/module-smtp/Mail/Transport.php:141, Laminas\\Mail\\Protocol\\Exception\\RuntimeException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials v17-20020a05600c215100b0039c4506bd25sm2601485wml.14 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/laminas/laminas-mail/src/Protocol/AbstractProtocol.php:339)"} []
+[2022-06-11 10:55:58] main.CRITICAL: 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials 2-20020a05600c268200b0039763d41a48sm2046784wmt.25 - gsmtp
+ {"exception":"[object] (Magento\\Framework\\Exception\\MailException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials 2-20020a05600c268200b0039763d41a48sm2046784wmt.25 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/mageplaza/module-smtp/Mail/Transport.php:141, Laminas\\Mail\\Protocol\\Exception\\RuntimeException(code: 0): 5.7.8 Username and Password not accepted. Learn more at
+ 5.7.8  https://support.google.com/mail/?p=BadCredentials 2-20020a05600c268200b0039763d41a48sm2046784wmt.25 - gsmtp
+ at /var/www/html/gestionlivraison/vendor/laminas/laminas-mail/src/Protocol/AbstractProtocol.php:339)"} []

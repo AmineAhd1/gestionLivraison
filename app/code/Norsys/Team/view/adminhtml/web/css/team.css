@@ -1,0 +1,6 @@
+.admin__menu .item-team-management.parent.level-0 > a:before {
+    content: url('../images/teams.svg');
+    height: 35px;
+    margin: 0 auto;
+    width: 30px;
+}

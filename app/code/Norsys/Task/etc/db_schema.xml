@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="norsys_task" resource="default" engine="innodb" comment="Task Table">
+        <column xsi:type="int" name="task_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Task ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="100" comment="Task Title"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Task Description"/>
+        <column xsi:type="text" name="status" nullable="true" comment="Task Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Task Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Task Modified Time"/>
+        <column xsi:type="int" name="admin_user_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Admin User ID"/>
+        <column xsi:type="int" name="ticket_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Ticket ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="task_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_admin_user" table="norsys_task"
+                    column="admin_user_id" referenceTable="admin_user" referenceColumn="user_id"
+        />
+        <constraint xsi:type="foreign" referenceId="FK_ticket" table="norsys_task"
+                    column="ticket_id" referenceTable="norsys_ticket" referenceColumn="ticket_id"
+        />
+    </table>
+</schema>

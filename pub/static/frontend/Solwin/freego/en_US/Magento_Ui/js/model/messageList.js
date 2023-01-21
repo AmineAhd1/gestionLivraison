@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/vendor/magento/module-ui/view/frontend/web/js/model/messageList.js

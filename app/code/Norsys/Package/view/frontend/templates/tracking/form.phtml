@@ -1,0 +1,58 @@
+<?php
+
+use Norsys\Package\Block\Tracking;
+
+/** @var Tracking $block */
+
+?>
+<div class="container">
+    <form class="form" id="form" name="form" method="POST" style="width: 50%">
+        <fieldset class="fieldset">
+            <legend class="legend">
+                <span><?= $block->escapeHtmlAttr(__('Enter package code')) ?></span>
+            </legend>
+            <div class="field">
+                <label class="label" for="code"><span> Code </span></label>
+                <div class="control">
+                    <input name="code" id="code" type="text"
+                           class="input-text required-entry"/>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="submit" id="generatePackageTRacking"
+                       name="tracking" value="Track"
+                       class="action submit primary">
+            </div>
+        </div>
+    </form>
+    <div class="result" style="margin: auto"></div>
+</div>
+
+
+<script>
+    require(['jquery'], function () {
+        jQuery(document).ready(function () {
+            jQuery(".result").hide();
+            jQuery("#form").submit(function () {
+
+                var value = jQuery("input[name='code']").val();
+                var url = "<?php echo $block->getBaseUrl() . 'norsys_package/tracking/result/' ?>";
+                jQuery.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {code: value},
+                    showLoader: true,
+                    cache: false,
+                    success: function (response) {
+                        console.log(response.output);
+                        jQuery(".result").show();
+                        jQuery(".result").html(response.output);
+                    }
+                });
+                return false;
+            });
+        });
+    });
+</script>

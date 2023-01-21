@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Norsys_Package::Package" title="Package" module="Norsys_Package" sortOrder="50" resource="Norsys_Package::Package"/>
+        <add id="Norsys_Package::Packages" title="View Packages" module="Norsys_Package" sortOrder="10" action="norsys_package/package/index" resource="Norsys_Package::Packages" parent="Norsys_Package::Package"/>
+        <add id="Norsys_Package::packages_management" title="Package Management" module="Norsys_Package" sortOrder="11" action="norsys_package/package/manage" resource="Norsys_Package::packages_management" parent="Norsys_Package::Package"/>
+        <add id="Norsys_Package::Return" title="View Return Packages" module="Norsys_Package" sortOrder="15" action="norsys_package/package/viewReturn" resource="Norsys_Package::Packages" parent="Norsys_Package::Package"/>
+    </menu>
+</config>

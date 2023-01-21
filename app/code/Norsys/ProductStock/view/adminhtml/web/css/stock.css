@@ -1,0 +1,6 @@
+.admin__menu .item-stock.parent.level-0 > a:before {
+    content: url('../images/stock.svg');
+    height: 35px;
+    margin: 0 auto;
+    width: 30px;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Norsys_Ticket::menu" title="Ticket Menu" module="Norsys_Ticket" sortOrder="10"
+             resource="Norsys_Ticket::menu"/>
+        <add id="Norsys_Ticket::view" title="View Tickets" module="Norsys_Ticket" sortOrder="10"
+             parent="Norsys_Ticket::menu" action="ticket/ticket/index" resource="Norsys_Ticket::view"/>
+        <add id="Norsys_Ticket::tasks" title="View All Tasks" module="Norsys_Ticket" sortOrder="10"
+             parent="Norsys_Ticket::menu" action="task/task/index" resource="Norsys_Ticket::view"/>
+    </menu>
+</config>

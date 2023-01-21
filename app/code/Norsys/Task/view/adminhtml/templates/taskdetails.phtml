@@ -1,0 +1,83 @@
+<?php
+
+use Norsys\Task\Block\Adminhtml\Task\View\Info;
+
+/** @var Info $block */
+$task = $block->getTask();
+$user = $block->getUser();
+$ticket = $block->getTicket();
+?>
+
+<section class="admin__page-section ">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Task Details')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tbody>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    </tbody>
+                    <tr>
+                        <td><?= $task["title"] ?></td>
+                        <td><?= $task["description"] ?></td>
+                        <td><?= $task["status"] ?></td>
+                        <td><?= $task["created_at"] ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Assigned To')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tbody>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    </tbody>
+                    <tr>
+                        <td><?= $user["firstname"] .' '. $user["lastname"] ?></td>
+                        <td><?= $user["email"] ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('On')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item ">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary ">
+                    <tbody>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Created At</th>
+                    <th>View More (Ticket Assignment ...etc)</th>
+                    </tbody>
+                    <tr>
+                        <td><?= $ticket["title"] ?></td>
+                        <td><?= $ticket["description"] ?></td>
+                        <td><?= $ticket["type"] ?></td>
+                        <td><?= $ticket["created_at"] ?></td>
+                        <td>
+                            <a href=" <?= $block->getSenderUrl($ticket['ticket_id']) ?> "> see more </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

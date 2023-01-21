@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Create New Ticket</title>
+        <script src="Norsys_Ticket::js/additional.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Norsys\Ticket\Block\Ticket" name="ticket_ticket_form"
+                   template="Norsys_Ticket::form.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

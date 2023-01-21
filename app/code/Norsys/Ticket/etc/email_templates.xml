@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="admin_emails_ticket_validation_template" label="Ticket Validated" file="ticket_validation.html"
+              type="text" module="Norsys_Ticket" area="adminhtml"/>
+</config>

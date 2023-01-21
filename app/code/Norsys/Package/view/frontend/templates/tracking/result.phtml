@@ -1,0 +1,43 @@
+<?php
+
+use Norsys\Package\Block\Tracking;
+
+/** @var Tracking $block */
+$trackingStatus = $block->getTrackingStatus();
+/** @var int $count */
+$count = 1;
+?>
+<?php if ($trackingStatus !== NULL && count($trackingStatus)) : ?>
+    <ul class="timeline">
+        <?php foreach ($trackingStatus as $ts) : ?>
+            <?php if ($count % 2 == 0) : ?>
+                <li>
+                    <div class="direction-r">
+                        <div class="flag-wrapper">
+                            <span class="flag"><?= $ts->getTitle() ?></span>
+                            <span class="time-wrapper"><span
+                                    class="time"><?= $block->formatDate($ts->getCreatedAt(), \IntlDateFormatter::LONG) ?></span></span>
+                        </div>
+                    </div>
+                </li>
+                <?php $count++ ?>
+            <?php else : ?>
+                <li>
+                    <div class="direction-l">
+                        <div class="flag-wrapper">
+                            <span class="flag"><?= $ts->getTitle() ?></span>
+                            <span class="time-wrapper"><span
+                                    class="time"><?= $block->formatDate($ts->getCreatedAt(), \IntlDateFormatter::LONG) ?></span></span>
+                        </div>
+                    </div>
+                </li>
+                <?php $count++ ?>
+            <?php endif ?>
+        <?php endforeach; ?>
+    </ul>
+<?php else : ?>
+    <div class="message info empty">
+        <span><?= $block->escapeHtml(__('NO Tracking status for the moment. Please enter a valid code')) ?></span>
+    </div>
+<?php endif ?>
+

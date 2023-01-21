@@ -1,0 +1,42 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="norsys_productstock_stock_listing_data_source" xsi:type="string">Norsys\ProductStock\Model\ResourceModel\ProductStock\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Norsys\ProductStock\Model\ResourceModel\ProductStock\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">norsys_product_stock_sl</argument>
+            <argument name="resourceModel" xsi:type="string">Norsys\ProductStock\Model\ResourceModel\ProductStock</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="StocksGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Norsys\ProductStock\Model\ResourceModel\Stock\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">StocksGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="StocksGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="norsys_stock_listing_data_source" xsi:type="string">Norsys\ProductStock\Model\ResourceModel\Stock\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Norsys\ProductStock\Model\ResourceModel\Stock\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">norsys_stock_sl</argument>
+            <argument name="resourceModel" xsi:type="string">Norsys\ProductStock\Model\ResourceModel\Stock</argument>
+        </arguments>
+    </virtualType>
+</config>

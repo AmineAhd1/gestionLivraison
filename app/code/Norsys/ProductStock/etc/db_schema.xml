@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="norsys_stock_sl" resource="default" engine="innodb" comment="norsys stock">
+        <column xsi:type="int" name="entity_id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="varchar" name="title" length="255" nullable="false" comment="Title"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false"
+                comment="created at"/>
+        <column xsi:type="int" name="user_cl_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="User Cl ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FL_user_cl" table="norsys_stock_sl"
+                    column="user_cl_id" referenceTable="admin_user" referenceColumn="user_id"
+                    onDelete="CASCADE"/>
+    </table>
+    <table name="norsys_product_stock_sl" resource="default" engine="innodb" comment="norsys product stock sl">
+        <column xsi:type="int" name="entity_id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="varchar" name="title" length="255" nullable="false" comment="Title"/>
+        <column xsi:type="varchar" name="description" length="255" comment="Description"/>
+        <column xsi:type="int" name="qty" padding="6" comment="Qty" nullable="false"/>
+        <column xsi:type="float" name="unitprice" unsigned="false" nullable="false" comment="unitprice"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false"
+                comment="created at"/>
+        <column xsi:type="datetime" name="updated_at" nullable="true" default="CURRENT_TIMESTAMP" on_update="true"
+                comment="updated at"/>
+        <column xsi:type="int" name="stock_id" padding="6" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Stock ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FL_product_stock" table="norsys_product_stock_sl"
+                    column="stock_id" referenceTable="norsys_stock_sl" referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>

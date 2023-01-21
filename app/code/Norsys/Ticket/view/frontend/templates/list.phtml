@@ -1,0 +1,46 @@
+<?php
+
+use Norsys\Ticket\Block\Ticket;
+
+/** @var Ticket $block */
+
+?>
+<?php $_tickets = $block->getTicketByCustomerId(); ?>
+<?= $block->getChildHtml('info') ?>
+<?php if ($_tickets && count($_tickets)) : ?>
+    <div class="table-wrapper">
+        <table class="data table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Tickets')) ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?= $block->escapeHtml(__('Ticket #')) ?></th>
+                <th scope="col" class="col title"><?= $block->escapeHtml(__('Title')) ?></th>
+                <th scope="col" class="col type"><?= $block->escapeHtml(__('Type')) ?></th>
+                <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                <th scope="col" class="col emergency"><?= $block->escapeHtml(__('Emergency')) ?></th>
+                <th scope="col" class="col date"><?= $block->escapeHtml(__('Created At')) ?></th>
+                <th scope="col" class="col actions"><?= $block->escapeHtml(__('Action')) ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($_tickets as $_ticket) : ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Ticket #')) ?>" class="col id"><?= $block->escapeHtml($_ticket->getTicketId()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Title')) ?>" class="col title"><?= $block->escapeHtml($_ticket->getTitle()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Type')) ?>" class="col type"><?= $block->escapeHtml($_ticket->getType()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>" class="col status"><?= $block->escapeHtml($_ticket->getStatus()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Emergency')) ?>" class="col emergency"><?= $block->escapeHtml($_ticket->getEmergency()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Date')) ?>" class="col date"><?= /* @noEscape */ $block->formatDate($_ticket->getCreatedAt()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Actions')) ?>" class="col actions">
+                        <a href="<?= $block->escapeUrl($block->getViewUrl($_ticket)) ?>"  class="action view">
+                            <span><?= $block->escapeHtml(__('View Ticket')) ?></span>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php else : ?>
+    <div class="message info empty"><span><?= $block->escapeHtml(__('You have placed no tickets.')) ?></span></div>
+<?php endif ?>

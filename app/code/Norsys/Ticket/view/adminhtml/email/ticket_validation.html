@@ -1,0 +1,14 @@
+<!--@subject {{trans "Ticket Validation 0000%ticket_id" ticket_id=$ticketId}} @-->
+
+{{trans "Hello %customer_name ," customer_name=$customerName}}
+
+{{trans "We have received your ticket request titled %ticket_title ," ticket_title=$ticketTitle }}
+
+{{trans "We are happy to inform you that your ticket has been validated by our tech expert and will be taken in consideration. Stay tuned for further details." }}
+
+{{trans "If you have not authorized this action, please contact us immediately at %store_email" store_email=$store_email |escape}}{{depend store_phone}} {{trans "or call us at %store_phone" store_phone=$store_phone |escape}}{{/depend}}.
+
+{{trans "Thanks,"}}
+
+{{var store.frontend_name}}
+

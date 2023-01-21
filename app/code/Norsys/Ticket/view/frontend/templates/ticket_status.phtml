@@ -1,0 +1,9 @@
+<?php
+
+use Norsys\Ticket\Block\View;
+
+/** @var View $block */
+
+?>
+<?php $_ticket = $block->getTicket() ; ?>
+<span class="order-status"><?= $block->escapeHtml($_ticket->getStatus()) ?></span>

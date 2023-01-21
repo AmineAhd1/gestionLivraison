@@ -1,0 +1,1 @@
+/var/www/html/gestionlivraison/vendor/magento/module-paypal-captcha/view/frontend/web/js/view/checkout/paymentCaptcha.js
